@@ -1,0 +1,56 @@
+services:
+  mariadb:
+    container_name: mariadb
+    networks:
+      - inception
+    env_file: .env
+    volumes: ['mariadb:/var/lib/mysql']
+    build:
+      context: requirements/mariadb
+      args:
+        SQL_DATABASE: ${SQL_DATABASE}
+        SQL_USER: ${SQL_USER}
+        SQL_PASSWORD: ${SQL_PASSWORD}
+        SQL_ROOT_PASSWORD: ${SQL_ROOT_PASSWORD}
+    restart: unless-stopped
+  nginx:
+    container_name: nginx
+    networks: 
+      - inception
+    depends_on: ['wordpress']
+    ports: ["443:443"]
+    build:
+      context: requirements/nginx
+    restart: on-failure
+  wordpress:
+    container_name: wordpress
+    networks:
+      - inception
+    env_file: .env
+    depends_on: ['mariadb']
+    build:
+      context: requirements/wordpress
+      args:
+        SQL_DATABASE: ${SQL_DATABASE}
+        SQL_USER: ${SQL_USER}
+        SQL_PASSWORD: ${SQL_PASSWORD}
+    volumes: ['wordpress:/var/www/wordpress']
+    restart: on-failure
+
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/mchetoui/data/wordpress'
+  mariadb:  
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/mchetoui/data/mariadb'
+
+networks:
+  inception:
+    driver: bridge
