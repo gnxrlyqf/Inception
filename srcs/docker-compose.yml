@@ -1,4 +1,12 @@
 services:
+  webserv:
+    container_name: webserv
+    networks:
+      - inception
+    volumes: ['webserv:/webserv']
+    build:
+      context: bonus/webserv
+    restart: unless-stopped
   mariadb:
     container_name: mariadb
     networks:
@@ -43,13 +51,19 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/mchetoui/data/wordpress'
+      device: '/home/gnxrly/data/wordpress'
+  webserv:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/gnxrly/data/webserv'
   mariadb:  
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/mchetoui/data/mariadb'
+      device: '/home/gnxrly/data/mariadb'
 
 networks:
   inception:

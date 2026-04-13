@@ -6,11 +6,11 @@ RUN apt install wget php8.2 php-fpm php-mysql mariadb-client -y
 
 COPY tools/setup.sh .
 
-RUN sh setup.sh
-
 ARG SQL_USER SQL_DATABASE SQL_PASSWORD
 
 ENV SQL_USER=$SQL_USER SQL_DATABASE=$SQL_DATABASE SQL_PASSWORD=$SQL_PASSWORD
+
+RUN sh setup.sh
 
 COPY conf/www.conf /etc/php/8.2/fpm/pool.d/
 
