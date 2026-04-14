@@ -17,12 +17,18 @@ services:
     ports: ['7681:7681']
     build:
       context: bonus/lftp-tty
+      args:
+        SQL_USER: ${SQL_USER}
+        SQL_PASSWORD: ${SQL_PASSWORD}
     restart: unless-stopped
   ftp:
     container_name: ftp
-    volumes: ['wordpress:/srv/files/ftp']
+    volumes: ['wordpress:/home/mchetoui/ftp']
     build:
       context: bonus/ftp
+      args:
+        SQL_USER: ${SQL_USER}
+        SQL_PASSWORD: ${SQL_PASSWORD}
     restart: unless-stopped
   webserv:
     container_name: webserv
