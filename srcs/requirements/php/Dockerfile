@@ -2,7 +2,7 @@ FROM debian:12
 
 RUN apt update -y
 
-RUN apt install wget php8.2 php-fpm php-mysql mariadb-client -y
+RUN apt install curl php8.2 php-fpm php-mysql mariadb-client -y
 
 COPY tools/setup.sh .
 

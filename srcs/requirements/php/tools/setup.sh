@@ -1,6 +1,6 @@
 sleep 10
 
-wget https://wordpress.org/latest.tar.gz
+curl -L https://wordpress.org/latest.tar.gz -o latest.tar.gz
 tar -xvf latest.tar.gz
 rm -f latest.tar.gz
 cp wordpress/wp-config-sample.php wordpress/wp-config.php
