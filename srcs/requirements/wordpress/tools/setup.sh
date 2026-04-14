@@ -11,6 +11,11 @@ sed -i "s/password_here/$SQL_PASSWORD/" wordpress/wp-config.php
 sed -i "s/localhost/mariadb/" wordpress/wp-config.php
 sed -i "s|define( 'ABSPATH', .* );|define( 'ABSPATH', 'wordpress/' );|" wordpress/wp-config.php
 
+printf "%s\n" \
+	"define( 'WP_REDIS_HOST' , 'redis' );" \
+	"define( 'WP_REDIS_PORT' , 6379 );" \
+	"define( 'WP_CACHE' , true);"
+
 mkdir -p /var/www
 
 mv wordpress /var/www
