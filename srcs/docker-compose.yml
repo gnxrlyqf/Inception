@@ -1,4 +1,16 @@
 services:
+  lftp-tty:
+    container_name: lftp-tty
+    ports: ['7681:7681']
+    build:
+      context: bonus/lftp-tty
+    restart: unless-stopped
+  ftp:
+    container_name: ftp
+    volumes: ['wordpress:/srv/files/ftp']
+    build:
+      context: bonus/ftp
+    restart: unless-stopped
   webserv:
     container_name: webserv
     networks:
@@ -29,6 +41,7 @@ services:
     ports: ["443:443"]
     build:
       context: requirements/nginx
+    volumes: ['wordpress:/var/www/wordpress']
     restart: on-failure
   wordpress:
     container_name: wordpress
