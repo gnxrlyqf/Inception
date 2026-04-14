@@ -25,8 +25,7 @@ This project is an Inception-style multi-container infrastructure built with Doc
 # Instructions
 1. **Clone the repository:**
    ```sh
-   git clone <repo-url>
-   cd Inception/srcs
+   git clone https://github.com/gnxrlyqf/Inception
    ```
 2. **Build and start the services:**
    ```sh
@@ -40,8 +39,11 @@ This project is an Inception-style multi-container infrastructure built with Doc
 
 # Resources
 [Docker documentation](https://docs.docker.com/)
+
 [Nginx documentation](https://nginx.org/en/docs/)
+
 [Wordpress official Nginx configuration](https://developer.wordpress.org/advanced-administration/server/web-server/nginx/)
+
 [Redis tutorial](https://www.youtube.com/watch?v=jgpVdJB2sKQ)
 
 ## Use of AI
