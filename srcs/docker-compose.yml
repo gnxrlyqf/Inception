@@ -80,19 +80,19 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/gnxrly/data/wordpress'
+      device: '/home/mchetoui/data/wordpress'
   webserv:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/gnxrly/data/webserv'
+      device: '/home/mchetoui/data/webserv'
   mariadb:  
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/gnxrly/data/mariadb'
+      device: '/home/mchetoui/data/mariadb'
 
 networks:
   inception:

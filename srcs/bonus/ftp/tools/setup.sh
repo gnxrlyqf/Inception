@@ -15,9 +15,6 @@ mkdir /home/$FTP_USER/ftp
 chown nobody:nogroup /home/$FTP_USER/ftp
 chmod a-w /home/$FTP_USER/ftp
 
-mkdir /home/$FTP_USER/ftp/files
-chown $FTP_USER:$FTP_USER /home/$FTP_USER/ftp/files
-
 sed -i -r "s/#write_enable=YES/write_enable=YES/1"   /etc/vsftpd.conf
 sed -i -r "s/#chroot_local_user=YES/chroot_local_user=YES/1"   /etc/vsftpd.conf
 
