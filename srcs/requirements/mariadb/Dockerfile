@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:12
 
 RUN apt update -y
 
